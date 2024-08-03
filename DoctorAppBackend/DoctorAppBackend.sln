@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoctorAPI", "DoctorAPI\DoctorAPI.csproj", "{CA9AC448-5E03-4ED8-8DF3-FC765DEC684A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{1B7F1428-E7E0-4C17-BF74-29DDEC47F377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{EE896D03-0E04-47CC-89D4-70F564A33DB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA9AC448-5E03-4ED8-8DF3-FC765DEC684A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA9AC448-5E03-4ED8-8DF3-FC765DEC684A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA9AC448-5E03-4ED8-8DF3-FC765DEC684A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA9AC448-5E03-4ED8-8DF3-FC765DEC684A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7F1428-E7E0-4C17-BF74-29DDEC47F377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7F1428-E7E0-4C17-BF74-29DDEC47F377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7F1428-E7E0-4C17-BF74-29DDEC47F377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7F1428-E7E0-4C17-BF74-29DDEC47F377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE896D03-0E04-47CC-89D4-70F564A33DB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE896D03-0E04-47CC-89D4-70F564A33DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE896D03-0E04-47CC-89D4-70F564A33DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE896D03-0E04-47CC-89D4-70F564A33DB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FEE6AE07-0C74-407B-8886-99D8463862CE}
+	EndGlobalSection
+EndGlobal
