@@ -1,0 +1,11 @@
+<h1>Doctor App Asp Net Core with Angular 20</h1>
+
+<h2>Call from the component {{title}}</h2>
+<!--><h3>to call the users from the list , remeber we use de next sintaxis  user.id-ser.name and this atributes are the sames from entityFramework .<br>
+    but , the variables without capitalize <h3></!-->
+ 
+ <ul>
+    <li *ngFor="let user of users">
+        {{user.id}}-{{user.name}}
+    </li>
+ </ul>
