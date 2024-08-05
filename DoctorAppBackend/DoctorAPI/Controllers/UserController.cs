@@ -1,5 +1,6 @@
 ﻿using Data;
 using Data.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace DoctorAPI.Controllers
             _tokenService = tokenService;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
@@ -29,12 +31,14 @@ namespace DoctorAPI.Controllers
             return Ok(users);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _dataContext.Users.FindAsync(id);
             return Ok(user);
         }
+
         [HttpPost("register")]
         public async Task<ActionResult<UserDTO>> PostUser(RegisterUserDTO register)
         {

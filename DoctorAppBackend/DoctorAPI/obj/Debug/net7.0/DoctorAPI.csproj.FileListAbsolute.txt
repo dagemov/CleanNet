@@ -78,3 +78,4 @@ C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\ne
 C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
