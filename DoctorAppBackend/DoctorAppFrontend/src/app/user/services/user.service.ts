@@ -17,7 +17,7 @@ export class UserService
   { 
 
   }
-  login(request:Login):Observable<Sesion>
+  capturerSesion(request:Login):Observable<Sesion>
   {
     return this.http.post<Sesion>(`${this.baseUrl}login`,request)
   }

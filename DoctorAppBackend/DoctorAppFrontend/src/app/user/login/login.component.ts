@@ -8,7 +8,7 @@ import { Login } from '../Interfaces/Login' ;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
@@ -31,15 +31,20 @@ export class LoginComponent {
       
     } 
 
-    LoginSesion() {
+    LoginSesion() 
+    {
       this.showLoading = true;
-      const request: Login = {
+      const request: 
+
+      Login = {
         email: this.formLogin.value.email,
         password: this.formLogin.value.password
       };
-      this.userService.login(request).subscribe({
+
+      this.userService.capturerSesion(request).subscribe({
 
          next:(response)=>{
+          console.log('Login response:', response); // Depuración
             this.sharedService.saveSection(response);
             this.router.navigate(['layout']);
          },
@@ -49,10 +54,13 @@ export class LoginComponent {
         },
 
          error: (error) => {
+          console.log('Login error:', error); // Depuración
           this.sharedService.openSnackBar(error.error,"Login Error");
           this.showLoading = false;
          }
+
       });
+      
     }
 
 }

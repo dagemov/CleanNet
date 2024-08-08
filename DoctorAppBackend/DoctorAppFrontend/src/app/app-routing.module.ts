@@ -15,15 +15,16 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'layout',
+    component: LayoutComponent,
+    pathMatch: 'full'
+  },
+  {
     path:'**', //To redirect to login when the path is not found
     redirectTo:'',
     pathMatch:'full'
   },
-  {
-    path: 'layout',
-    component: LayoutComponent,
-    pathMatch: 'full'
-  }
+  
 ];
 
 @NgModule({
