@@ -1,16 +1,12 @@
 ﻿namespace DoctorAPI.Errors
 {
-    public class ApiException
+    public class ApiException : ApiErrorResponse
     {
-        public ApiException(int statusCode, string messageError, string details)
-        {
-            StatusCode = statusCode;
-            MessageError = messageError;
+        public ApiException(int statusCode, string message=null, string details = null) : base(statusCode,message)
+        {          
             Details = details;
         }
-
-        public int StatusCode { get; set; }
-        public string MessageError { get; set; }
+        
         public string Details { get; set; }
     }
 }

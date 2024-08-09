@@ -1,4 +1,5 @@
 ﻿using Data;
+using DoctorAPI.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Models.Entities;
@@ -28,7 +29,7 @@ namespace DoctorAPI.Controllers
             var user = _context.Users.Find(-1);
             if (user == null)
             {
-                return NotFound();
+                return NotFound(new ApiErrorResponse(404));
             }
             return user;
         }
@@ -45,7 +46,7 @@ namespace DoctorAPI.Controllers
         [HttpGet("bad-request")]
         public ActionResult<string> GetBadRequest()
         {          
-            return BadRequest("Invalid required - Bad Request");
+            return BadRequest(new ApiErrorResponse(400));
         }
     }
 }
