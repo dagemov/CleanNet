@@ -15,9 +15,8 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'layout',
-    component: LayoutComponent,
-    pathMatch: 'full'
+    path: 'layout', //layout/dashboard , layaout/categories
+    loadChildren: () => import('./shared/shared.module').then(m => m.SharedModule),
   },
   {
     path:'**', //To redirect to login when the path is not found
