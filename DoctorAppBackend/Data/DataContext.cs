@@ -1,21 +1,25 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions options) : base(options) 
+        public DataContext(DbContextOptions options) : base(options)
         {
-            
+
         }
 
         //DbSets
         public DbSet<User> Users { get; set; }
+        public DbSet<Speciality> Specialities { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        }
     }
 }
