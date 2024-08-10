@@ -3,6 +3,8 @@ using Data.Services;
 using Data;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
+using DoctorAPI.Errors;
 
 namespace DoctorAPI.Extensions
 {
@@ -48,6 +50,25 @@ namespace DoctorAPI.Extensions
             services.AddCors();
 
             services.AddScoped<ITokenService, TokenService>();
+
+            services.Configure<ApiBehaviorOptions>(options=>
+            {
+                options.InvalidModelStateResponseFactory = actionContext =>
+                {
+                    var erros = actionContext.ModelState
+                    .Where(e => e.Value.Errors.Count > 0)
+                    .SelectMany(x=> x.Value.Errors)
+                    .Select(x=>x.ErrorMessage).ToArray();
+
+                    var errosResponse = new ApiValidationErrorReponse
+                    {
+                        Erros = erros,
+                    };
+
+                    return new BadRequestObjectResult(errosResponse);
+                };
+            });
+
             return services;
 
         }
