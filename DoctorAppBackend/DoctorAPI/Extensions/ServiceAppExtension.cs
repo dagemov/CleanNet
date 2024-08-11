@@ -5,6 +5,8 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using DoctorAPI.Errors;
+using Data.Interfaces.IRepository;
+using Data.Repository;
 
 namespace DoctorAPI.Extensions
 {
@@ -68,6 +70,8 @@ namespace DoctorAPI.Extensions
                     return new BadRequestObjectResult(errosResponse);
                 };
             });
+
+            services.AddScoped<IWorkSpace, WorkSpace>();
 
             return services;
 
