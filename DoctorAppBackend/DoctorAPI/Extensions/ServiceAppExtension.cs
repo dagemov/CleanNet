@@ -8,6 +8,8 @@ using DoctorAPI.Errors;
 using Data.Interfaces.IRepository;
 using Data.Repository;
 using Utilyties;
+using BusinessLogic.Services.Interfaces;
+using BusinessLogic.Services;
 
 namespace DoctorAPI.Extensions
 {
@@ -74,6 +76,7 @@ namespace DoctorAPI.Extensions
 
             services.AddScoped<IWorkSpace, WorkSpace>();
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddScoped<ISpecialityService, SpecialityService>();
 
             return services;
 
