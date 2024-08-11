@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using DoctorAPI.Errors;
 using Data.Interfaces.IRepository;
 using Data.Repository;
+using Utilyties;
 
 namespace DoctorAPI.Extensions
 {
@@ -72,6 +73,7 @@ namespace DoctorAPI.Extensions
             });
 
             services.AddScoped<IWorkSpace, WorkSpace>();
+            services.AddAutoMapper(typeof(MappingProfile));
 
             return services;
 

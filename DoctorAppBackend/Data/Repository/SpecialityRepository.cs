@@ -28,6 +28,7 @@ namespace Data.Repository
                 specialityDb.Name = speciality.Name;
                 specialityDb.Status = speciality.Status;
                 specialityDb.Description = speciality.Description;
+                specialityDb.Updated = DateTime.Now;
                 _context.SaveChanges();
             }
         }
