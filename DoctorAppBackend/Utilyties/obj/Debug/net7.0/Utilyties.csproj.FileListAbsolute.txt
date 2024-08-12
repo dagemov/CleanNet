@@ -1,0 +1,15 @@
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\bin\Debug\net7.0\Utilyties.deps.json
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\bin\Debug\net7.0\Utilyties.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\bin\Debug\net7.0\Utilyties.pdb
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\bin\Debug\net7.0\Models.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\bin\Debug\net7.0\Models.pdb
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\Utilyties.csproj.AssemblyReference.cache
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\Utilyties.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\Utilyties.AssemblyInfoInputs.cache
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\Utilyties.AssemblyInfo.cs
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\Utilyties.csproj.CoreCompileInputs.cache
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\Utilyties.csproj.CopyComplete
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\Utilyties.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\refint\Utilyties.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\Utilyties.pdb
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\Utilyties\obj\Debug\net7.0\ref\Utilyties.dll

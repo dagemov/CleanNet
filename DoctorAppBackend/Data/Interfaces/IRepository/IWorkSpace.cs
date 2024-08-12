@@ -9,7 +9,8 @@ namespace Data.Interfaces.IRepository
     public interface IWorkSpace : IDisposable
     {
         ISpecialityRepository SpecialityRepository { get; }
-
+        
+        IAddressRepository AddressRepository { get; }
         Task Save();
     }
 }

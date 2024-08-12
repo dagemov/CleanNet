@@ -79,3 +79,9 @@ C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\ne
 C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\AutoMapper.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\BusinessLogic.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\Utilyties.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\BusinessLogic.pdb
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\bin\Debug\net7.0\Utilyties.pdb

@@ -14,6 +14,7 @@ namespace Data
         //DbSets
         public DbSet<User> Users { get; set; }
         public DbSet<Speciality> Specialities { get; set; }
+        public DbSet<Address> Address { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

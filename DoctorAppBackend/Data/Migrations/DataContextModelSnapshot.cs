@@ -22,6 +22,37 @@ namespace Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Models.Entities.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameStreet")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ZipCode")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Address");
+                });
+
             modelBuilder.Entity("Models.Entities.Speciality", b =>
                 {
                     b.Property<int>("Id")
