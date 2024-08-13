@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SpecialityListComponent } from '../speciality/pages/speciality-list/speciality-list.component';
+import {} from '../speciality/speciality.module'
 
 const routes: Routes = [
   {
@@ -11,6 +13,11 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'speciality',
+        component : SpecialityListComponent,
         pathMatch: 'full'
       },
       {

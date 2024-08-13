@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { UserService } from './services/user.service';
-import { LoginComponent } from './login/login.component';
 import { MaterialModule } from '../material/material.module';
+import { SpecialityService } from './services/speciality.service';
+import { SpecialityListComponent } from './pages/speciality-list/speciality-list.component';
+
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent,
+    SpecialityListComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     MaterialModule
   ],
-  exports: [ 
-    LoginComponent
-  ],
   providers: [
-    UserService
+      SpecialityService
   ],
 })
-export class UserModule { }
+export class SpecialityModule { }

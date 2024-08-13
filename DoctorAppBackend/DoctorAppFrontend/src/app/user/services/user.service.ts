@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Login } from '../Interfaces/Login';
 import { Observable } from 'rxjs';
 import { Sesion } from '../Interfaces/sesion';
+import { ApiResponse } from '../../interfaces/api-respose';
 
 
 @Injectable({
@@ -21,4 +22,5 @@ export class UserService
   {
     return this.http.post<Sesion>(`${this.baseUrl}login`,request)
   }
+
 }
