@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { SpecialityService } from '../../services/speciality.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalSpecialityComponent } from '../../modals/modal-speciality/modal-speciality.component';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-speciality-list',
@@ -87,5 +89,43 @@ export class SpecialityListComponent implements OnInit, AfterViewInit{
       
     })
     //always check the rute in the service return this.http.put<ApiResponse>(`${this.baseUrl}${request.id}`,request); without id
+  }
+
+  deleteSpeciality(speciality : speciality){
+    Swal.fire
+    ({
+      title: 'Are you sure about deleting this speciality?',
+      text: speciality.name,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'No',
+      confirmButtonText: 'Yes, delete it',
+      
+    })
+    .then((result)=>
+    {
+      if(result.isConfirmed)
+      {
+        this._specialityService.delete(speciality.id).subscribe({
+          next: (data) => 
+            {
+              if(data.isSuccesfuly)
+              {
+                this._sharedService.openSnackBar('Speciality deleted successfully','Success');
+                this.getSpecialities();
+              } 
+              else 
+              {
+                this._sharedService.openSnackBar('Speciality not deleted','Error');
+              }
+            },
+            error: (err) => {
+              console.log(err);
+            }
+        });
+      }
+    });
   }
 }
