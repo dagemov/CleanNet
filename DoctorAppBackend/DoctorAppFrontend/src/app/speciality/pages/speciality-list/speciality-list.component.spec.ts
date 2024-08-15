@@ -21,3 +21,4 @@ describe('SpecialityListComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
