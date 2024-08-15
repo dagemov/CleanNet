@@ -71,4 +71,21 @@ export class SpecialityListComponent implements OnInit, AfterViewInit{
       }
     })
   }
+  editSpeciality(speciality : speciality)
+  {
+
+    this.dialog
+    .open(ModalSpecialityComponent, 
+    {
+      disableClose: true,
+      width: '400px',
+      data: speciality
+    })
+    .afterClosed()
+    .subscribe((result) => {
+      if(result === true)  this.getSpecialities();
+      
+    })
+    //always check the rute in the service return this.http.put<ApiResponse>(`${this.baseUrl}${request.id}`,request); without id
+  }
 }

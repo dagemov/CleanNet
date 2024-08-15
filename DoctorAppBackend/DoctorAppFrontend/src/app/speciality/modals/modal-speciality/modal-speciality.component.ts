@@ -22,11 +22,19 @@ export class ModalSpecialityComponent implements OnInit{
               private _specialityService : SpecialityService,
               private _sharedService : SharedService)  
   { 
+    //Values to modal form ( name, description, status ) check out they have to be the same as in interface
     this.formSpeciality = this.fb.group({
       name : ['', Validators.required],
       description : ['', Validators.required],
       status : ['1', Validators.required] 
-    })
+    });
+    // Set title and button name when opening modal edit 
+    if(this.specialityData != null)
+    {
+      this.title = "Edit Speciality";
+      this.buttonName = "Update";
+    }
+
   }
 
   ngOnInit(): void {
@@ -34,7 +42,7 @@ export class ModalSpecialityComponent implements OnInit{
       this.formSpeciality.patchValue({
         name : this.specialityData.name,
         description : this.specialityData.description,
-        status : this.specialityData.status.toString() // Corregido
+        status : this.specialityData.status.toString() 
       })
     }
   }

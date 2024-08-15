@@ -22,7 +22,8 @@ export class SpecialityService {
   }
 
   update(request: speciality):Observable<ApiResponse> {
-    return this.http.put<ApiResponse>(`${this.baseUrl}${request.id}`,request);
+    //return this.http.put<ApiResponse>(`${this.baseUrl}${request.id}`,request);
+    return this.http.put<ApiResponse>(`${this.baseUrl}`,request);
   }
 
   delete(id: number):Observable<ApiResponse> {
