@@ -12,14 +12,15 @@ namespace Data.Repository
         private readonly DataContext _context;
 
         public IAddressRepository AddressRepository { get; set; }
-
-        public ISpecialityRepository SpecialityRepository { get;private set; }       
+        public IMedicRepository MedicRepository { get; set; }
+        public ISpecialityRepository SpecialityRepository { get;set; }       
 
         public WorkSpace(DataContext context)
         {
             _context = context;
             SpecialityRepository = new SpecialityRepository(_context);
             AddressRepository = new AddressRepository(_context);
+            MedicRepository = new MedicRepository(_context);
         }
        
 
