@@ -84,3 +84,4 @@ C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\obj\Debug\ne
 C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\obj\Debug\net7.0\DoctorAPI.pdb
 C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\obj\Debug\net7.0\DoctorAPI.genruntimeconfig.cache
 C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\obj\Debug\net7.0\ref\DoctorAPI.dll
+C:\Users\sebastian\source\repos\CleanNet\DoctorAppBackend\DoctorAPI\obj\Debug\net7.0\DoctorAPI.MvcApplicationPartsAssemblyInfo.cs

@@ -24,8 +24,9 @@ namespace Data.Configurations
 
             // Relaciones
             builder.HasOne(x => x.Address)
-                   .WithMany()
-                   .HasForeignKey(x => x.AddresId);
+                   .WithMany(a=> a.Medics)
+                   .HasForeignKey(x => x.AddresId)
+                   .OnDelete(DeleteBehavior.Cascade); // Eliminar en cascada
 
             builder.HasOne(x => x.Speciality)
                    .WithMany()

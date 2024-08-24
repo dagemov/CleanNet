@@ -15,5 +15,7 @@ namespace Models.Entities
         public string ZipCode { get; set; }
         public string FullAdress => Number +" "+NameStreet+" "+ZipCode; 
 
+        public ICollection<Medic> Medics { get; set; }
+
     }
 }

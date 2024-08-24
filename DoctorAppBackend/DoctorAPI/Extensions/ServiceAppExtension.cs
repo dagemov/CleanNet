@@ -77,8 +77,11 @@ namespace DoctorAPI.Extensions
             services.AddScoped<IWorkSpace, WorkSpace>();
             services.AddAutoMapper(typeof(MappingProfile));
 
-            services.AddScoped<ISpecialityService, SpecialityService>();
             services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IMedicService, MedicService>();
+            services.AddScoped<ISpecialityService, SpecialityService>();
+    
+     
 
             return services;
 

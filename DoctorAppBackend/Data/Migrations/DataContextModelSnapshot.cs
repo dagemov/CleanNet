@@ -165,7 +165,7 @@ namespace Data.Migrations
             modelBuilder.Entity("Models.Entities.Medic", b =>
                 {
                     b.HasOne("Models.Entities.Address", "Address")
-                        .WithMany()
+                        .WithMany("Medics")
                         .HasForeignKey("AddresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -179,6 +179,11 @@ namespace Data.Migrations
                     b.Navigation("Address");
 
                     b.Navigation("Speciality");
+                });
+
+            modelBuilder.Entity("Models.Entities.Address", b =>
+                {
+                    b.Navigation("Medics");
                 });
 #pragma warning restore 612, 618
         }
