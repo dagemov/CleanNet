@@ -35,6 +35,25 @@ namespace DoctorAPI.Controllers
             return Ok(_response);
         }
 
+        [HttpGet]
+        [Route("GetActives")]
+        public async Task<IActionResult> GetActives()
+        {
+            try 
+            {
+                _response.Result = await _specialityService.GetActiveSpecialityListAsync();
+                _response.IsSuccesfuly = true;
+                _response.StatusCode = HttpStatusCode.OK;
+            }
+            catch (Exception ex) 
+            {
+                _response.IsSuccesfuly = false;
+                _response.StatusCode = HttpStatusCode.BadRequest;
+                _response.Message = ex.Message;
+            }
+            return Ok(_response);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(SpecialityDTO specialityDTO)
         {

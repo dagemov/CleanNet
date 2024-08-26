@@ -5,8 +5,11 @@ import { LayoutComponent } from './layout/layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SpecialityListComponent } from '../speciality/pages/speciality-list/speciality-list.component';
 import { AddressListComponent } from '../address/pages/address-list/address-list.component';
+import { MedicListComponent } from '../medic/pages/medic-list/medic-list.component';
 import {} from '../speciality/speciality.module';
 import {} from '../address/address.module';
+import {} from '../medic/medic.module';
+
 
 
 const routes: Routes = [
@@ -27,6 +30,11 @@ const routes: Routes = [
         path: 'speciality',
         component : SpecialityListComponent,
         pathMatch: 'full'
+      },
+      {
+        path: 'medic',
+        component: MedicListComponent,
+        pathMatch : 'full'
       },
       {
         path: '**',

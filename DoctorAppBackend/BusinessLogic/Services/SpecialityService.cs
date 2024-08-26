@@ -74,6 +74,34 @@ namespace BusinessLogic.Services
             }
         }
 
+        public async Task<IEnumerable<SpecialityDTO>> GetActiveSpecialityListAsync()
+        {
+            try
+            {
+                var list = await _workSpace.SpecialityRepository.GetAllAsync(
+                    s=>s.Status == true,
+                    orderBy: e => e.OrderBy(filter => filter.Name));
+
+                /*
+                 * var filterlist = new List<Speciality>();
+
+                    foreach (var item in list)
+                    {
+                        if (item.Status == true)
+                        {                      
+                            filterlist.Add(item);
+                        }
+                }*/
+
+                return _mapper.Map<IEnumerable<SpecialityDTO>>(list);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public async Task<IEnumerable<SpecialityDTO>> GetSpecialityListAsync()
         {
             try
