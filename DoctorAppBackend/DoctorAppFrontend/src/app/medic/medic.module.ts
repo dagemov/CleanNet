@@ -4,12 +4,14 @@ import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material/material.module';
 import { MedicListComponent } from './pages/medic-list/medic-list.component';
 import { MedicService } from './services/medic.service';
+import { ModalMedicComponent } from './modals/modal-medic/modal-medic.component';
 
 
 
 @NgModule({
   declarations: [
-    MedicListComponent
+    MedicListComponent,
+    ModalMedicComponent
   ],
   imports: [
     CommonModule,

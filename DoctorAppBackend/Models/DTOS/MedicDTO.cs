@@ -15,7 +15,7 @@ namespace Models.DTOS
         [Key]
         public int Id { get; set; }
 
-        public int AddresId { get; set; }
+        public int AddressId { get; set; }
         public  string AddressName { get; set; }
 
         public string FirstName { get; set; }

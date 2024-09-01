@@ -5,6 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MedicService } from '../../services/medic.service';
 import { SharedService } from '../../../shared/shared.service';
 import { filter } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalMedicComponent } from '../../modals/modal-medic/modal-medic.component';
 
 @Component({
   selector: 'app-medic-list',
@@ -34,7 +36,8 @@ export class MedicListComponent implements OnInit, AfterViewInit{
   constructor
   (
     private _medicService:MedicService,
-    private _shared: SharedService
+    private _shared: SharedService,
+    private dialog: MatDialog
   )
   {
 
@@ -78,7 +81,16 @@ export class MedicListComponent implements OnInit, AfterViewInit{
   }
 
   createMedic(){
-
+    this.dialog
+    .open(ModalMedicComponent,{disableClose:true,width:'600px'})
+    .afterClosed()
+    .subscribe((result)=>
+    {
+      if(result==='true')
+      {
+        this.getMedicts();
+      }
+    })
   }
 
   editMedic(Medic:Medic){

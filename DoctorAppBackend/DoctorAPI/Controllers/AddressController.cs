@@ -39,9 +39,11 @@ namespace DoctorAPI.Controllers
         {
             try
             {
-                 await _addressService.AddAddressDTO(addressDTO);
+                var createdAddress =  await _addressService.AddAddressDTO(addressDTO);
+
                 _response.IsSuccesfuly = true;
                 _response.StatusCode = HttpStatusCode.Created;
+                _response.Result = createdAddress.Id; // Aquí se asigna el ID de la dirección creada al result
             }
             catch (Exception ex)
             {

@@ -21,26 +21,35 @@ namespace BusinessLogic.Services
            _mapper = mapper;
            _workSpace = workSpace;
         }
+        
+        public async Task<Address> addressBeforeMeidc(MedicDTO dto)
+        {
+            Address address = await _workSpace.AddressRepository.GetAsync(a => a.Id == dto.AddressId);
 
+            if (address == null)
+            {
+                address = new Address
+                {
+                    NameStreet = dto.NameStreet,
+                    Number = dto.NumberStreet,
+                    ZipCode = dto.ZipCode,
+                    Description = dto.Description,
+                };
+                await _workSpace.AddressRepository.Add(address);
+                await _workSpace.Save();
+            }
+            return(address);
+        }
         public async Task<MedicDTO> Add(MedicDTO dto)
         {
             try
             {
-                Address address = await _workSpace.AddressRepository.GetAsync(a => a.Id == dto.AddresId);
+                var address = await  addressBeforeMeidc(dto);
 
                 if (address == null)
                 {
-                    address = new Address
-                    {
-                        NameStreet = dto.NameStreet,
-                        Number = dto.NumberStreet,
-                        ZipCode = dto.ZipCode,
-                        Description = dto.Description,
-                    };
-                    await _workSpace.AddressRepository.Add(address);
-                    await _workSpace.Save();
+                    throw new TaskCanceledException("Error to create adress before medic");
                 }
-
 
                 Medic medic = new Medic()
                 {
@@ -57,7 +66,9 @@ namespace BusinessLogic.Services
                 };
                 await _workSpace.MedicRepository.Add(medic);
                 await _workSpace.Save();
+
                 if(medic.Id == 0) throw new TaskCanceledException("Error to created Medic");
+
                 return _mapper.Map<MedicDTO>(medic);
             }
             catch (Exception)
@@ -121,7 +132,7 @@ namespace BusinessLogic.Services
 
                 if(medicDb==null) throw new TaskCanceledException("Record not found or not exist , ples check out");
 
-                medicDb.AddresId = dto.AddresId;
+                medicDb.AddresId = dto.AddressId;
                 medicDb.FirstName = dto.FirstName;
                 medicDb.MiddleName = dto.MiddleName;
                 medicDb.LastName = dto.LastName;

@@ -35,7 +35,7 @@ import { address } from './../../address/interfaces/address';
 
 export interface Medic{
     id: number,
-    addressddresId : number,
+    addressId : number,
     addressName: string,
     firstName : string,
     gender : number,
