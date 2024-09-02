@@ -38,6 +38,10 @@ namespace BusinessLogic.Services
                 await _workSpace.AddressRepository.Add(address);
                 await _workSpace.Save();
             }
+            else if(address.Id == dto.AddressId) 
+            {
+                address = await _workSpace.AddressRepository.GetAsync(a => a.Id == dto.AddressId);
+            }
             return(address);
         }
         public async Task<MedicDTO> Add(MedicDTO dto)
@@ -110,10 +114,12 @@ namespace BusinessLogic.Services
 
         public async Task<IEnumerable<MedicDTO>> GetAllMedicsDTO()
         {
+            //TODO: we include the adress like this form with extend methods :)
             try
             {
                 var list = await _workSpace.MedicRepository.GetAllAsync(
-                        orderBy: e=>e.OrderBy(e=>e.LastName)
+                        orderBy: e=>e.OrderBy(e=>e.LastName),
+                        includeProperties: "Address"
                     );
                 return _mapper.Map<IEnumerable<MedicDTO>>(list);
             }
@@ -128,19 +134,22 @@ namespace BusinessLogic.Services
         {
             try
             {
+                var address = await addressBeforeMeidc(dto);
+
                 var medicDb = await _workSpace.MedicRepository.GetAsync(m=>m.Id == dto.Id);
 
                 if(medicDb==null) throw new TaskCanceledException("Record not found or not exist , ples check out");
 
-                medicDb.AddresId = dto.AddressId;
+                medicDb.AddresId = address.Id;
                 medicDb.FirstName = dto.FirstName;
                 medicDb.MiddleName = dto.MiddleName;
                 medicDb.LastName = dto.LastName;
                 medicDb.Gender = dto.Gender;
                 medicDb.Phone = dto.Phone;
                 medicDb.Status = dto.Status == 1 ? true : false;
-                medicDb.SpecialityId = dto.SpecialityId;
-                
+                medicDb.SpecialityId = dto.SpecialityId;//agregar includo address a medic get
+
+                 _workSpace.AddressRepository.Update(address);
                 _workSpace.MedicRepository.Update(medicDb);
                 await _workSpace.Save();
             }

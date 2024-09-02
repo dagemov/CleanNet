@@ -85,32 +85,67 @@ export class ModalMedicComponent implements OnInit{
       })
     }
   }
-  // Método para crear la dirección y devolver su ID
-  createAddress(): Promise<number> {
+  //createAddress before medic to get Id
+  createAddress(): Promise<number> 
+  {
     const address: address = {
-        id: 0,
+        id: this.dataMedic.addressId == null ? 0 : this.dataMedic.addressId,
         nameStreet: this.formMedic.value.nameStreet,
         numberStreet: this.formMedic.value.numberStreet,
         zipCode: this.formMedic.value.zipCode,
         description: this.formMedic.value.description,
     };
+    console.log('address id => '+`${this.dataMedic.addressId}`,address.id,this.dataMedic)
 
     return new Promise<number>((resolve, reject) => {
-        this._addressService.create(address).subscribe({
-            next: (data) => {
-                if (data.isSuccesfuly && data.result) {
-                    resolve(data.result);  // Usar el ID de la dirección creada
-                } else {
+      if(this.dataMedic.addressId == 0)
+      {
+        this._addressService.create(address).subscribe(
+          {
+            next: (data) => 
+              {
+                if (data.isSuccesfuly && data.result) 
+                {
+                    resolve(data.result);  // Get id from backend 
+                } 
+                else 
+                {
                     this._sharedService.openSnackBar('Error to create Address', 'Error');
                     reject('Error: No ID returned '+`${data.result}`);
                 }
             },
-            error: (error) => {
+            error: (error) => 
+            {
                 console.log(error);
                 this._sharedService.openSnackBar('Error to create Address', 'Error');
                 reject(error);
             }
         });
+      }
+      else
+      {
+        this._addressService.update(address).subscribe(
+          {
+            next: (data) => 
+              {
+                if (data.isSuccesfuly && data.result) 
+                {
+                    resolve(data.result);  // Get id from backend 
+                } 
+                else 
+                {
+                    this._sharedService.openSnackBar('Error to update Address', 'Error');
+                    reject('Error: No ID returned '+`${data.result}`);
+                }
+            },
+            error: (error) => 
+            {
+                console.log(error);
+                this._sharedService.openSnackBar('Error to create Address', 'Error');
+                reject(error);
+            }
+        });
+      }
     });
 }
 
@@ -128,7 +163,7 @@ export class ModalMedicComponent implements OnInit{
         phone: this.formMedic.value.phone,
         gender: parseInt(this.formMedic.value.gender, 10),
         specialityId: parseInt(this.formMedic.value.specialityId, 10),
-        addressId: addressId,  // Usar el ID de la dirección recién creada
+        addressId: addressId,  // used id
         status: parseInt(this.formMedic.value.status, 10),
         specialityName: '',
         addressName: '',
@@ -137,32 +172,47 @@ export class ModalMedicComponent implements OnInit{
         zipCode: this.formMedic.value.zipCode,
         description: this.formMedic.value.description
       };
-
-      if (this.dataMedic == null) {
-        this._medicService.create(medic).subscribe({
-          next: (data) => {
-            if (data.isSuccesfuly) {
+      console.log('address id => const medic '+`${this.dataMedic.firstName}`+medic.addressId)
+      if (this.dataMedic == null) 
+      {
+        this._medicService.create(medic).subscribe
+        ({
+          next: (data) => 
+          {
+            if (data.isSuccesfuly) 
+            {
               this._sharedService.openSnackBar('New Medic Success', 'Success RECORD');
               this.modal.close("true");
-            } else {
+            }
+            else
+            {
               this._sharedService.openSnackBar('Error to create medic', 'Warning !!');
             }
           },
-          error: (e) => {
+          error: (e) => 
+          {
             this._sharedService.openSnackBar(e.error.errors, 'Error!');
           }
         });
-      } else {
-        this._medicService.update(medic).subscribe({
-          next: (data) => {
-            if (data.isSuccesfuly) {
+      } else 
+      {
+        this._medicService.update(medic).subscribe
+        ({
+          next: (data) => 
+          {
+            if (data.isSuccesfuly) 
+            {
               this._sharedService.openSnackBar('Update Medic Success', 'Success RECORD');
               this.modal.close("true");
-            } else {
+
+            } 
+            else 
+            {
               this._sharedService.openSnackBar('Error to update medic', 'Warning !!');
             }
           },
-          error: (e) => {
+          error: (e) => 
+          {
             console.log(e);
             this._sharedService.openSnackBar(e.error.errors, 'Error!');
           }
@@ -172,75 +222,4 @@ export class ModalMedicComponent implements OnInit{
       console.log('Error in address creation:', error);
     });
   }
-  /*
-  createOrUpdateMedic()
-  {
-    console.log('Invocando createOrUpdateMedic');
-    const medic : Medic =
-    {
-      id : this.dataMedic == null ? 0 : this.dataMedic.id,
-      firstName: this.formMedic.value.firstName,
-      middleName:this.formMedic.value.middleName,
-      lastName:this.formMedic.value.lastName,
-      phone:this.formMedic.value.phone,
-      gender:parseInt(this.formMedic.value.gender),
-      specialityId:parseInt(this.formMedic.value.specialityId),
-      addressId:parseInt(this.formMedic.value.addresId, 10),
-      status:parseInt(this.formMedic.value.status),
-
-      specialityName:'',
-      addressName:'',
-
-      nameStreet:this.formMedic.value.nameStreet,
-      numberStreet:this.formMedic.value.numberStreet,
-      zipCode:this.formMedic.value.zipCode,
-      description:this.formMedic.value.description
-    }
-
-
-    console.log('Objeto medic:', medic);
-    if(this.dataMedic == null)
-    {
-        this._medicService.create(medic).subscribe
-        ({
-            next:(data)=>
-            {
-              if(data.isSuccesfuly)
-              {
-                this._sharedService.openSnackBar('New Medic Succes','Succes RECORD');
-                this.modal.close("true");
-              }
-              else{
-                this._sharedService.openSnackBar('Error to create medic','Warning !!');
-              }
-            },
-            error:(e)=>{
-              this._sharedService.openSnackBar(e.error.errors, 'error!');
-            }
-
-        })
-    }
-    else
-    {
-      this._medicService.update(medic).subscribe
-      ({
-        next:(data)=>
-          {
-            if(data.isSuccesfuly)
-            {
-              this._sharedService.openSnackBar('Update Medic Succes','Succes RECORD');
-              this.modal.close("true");
-            }
-            else{
-              this._sharedService.openSnackBar('Error to update medic','Warning !!');
-            }
-          },
-          error:(e)=>{
-            console.log(e);
-            this._sharedService.openSnackBar(e.erro.erros,'error!')
-          }
-      })
-    }
-  }
-  */
 }
