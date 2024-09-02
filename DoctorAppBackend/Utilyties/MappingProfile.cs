@@ -20,6 +20,7 @@ namespace Utilyties
                 .ForMember(d => d.SpecialityName, m => m.MapFrom(o => o.Speciality.Name))
                 .ForMember(d => d.AddressName, m => m.MapFrom(o => o.Address.NameStreet))
                 .ForMember(d => d.NumberStreet, m => m.MapFrom(o => o.Address.Number))
+                .ForMember(d=>d.NameStreet,m=>m.MapFrom(o=>o.Address.NameStreet))   
                 .ForMember(d => d.ZipCode, m => m.MapFrom(o => o.Address.ZipCode))
                 .ForMember(d => d.Description, m => m.MapFrom(o => o.Address.Description));
 

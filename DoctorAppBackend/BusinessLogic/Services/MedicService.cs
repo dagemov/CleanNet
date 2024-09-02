@@ -41,8 +41,19 @@ namespace BusinessLogic.Services
             else if(address.Id == dto.AddressId) 
             {
                 address = await _workSpace.AddressRepository.GetAsync(a => a.Id == dto.AddressId);
+                // aqui hacer lo mismo que crear , pero darle actualizar :D   await _workSpace.AddressRepository.Update(address);
+
+                address.NameStreet = dto.NameStreet;
+                address.Number = dto.NumberStreet;
+                address.ZipCode = dto.ZipCode;
+                address.Description = dto.Description;
+                
+
+                 _workSpace.AddressRepository.Update(address);
+                await _workSpace.Save();
+
             }
-            return(address);
+            return (address);
         }
         public async Task<MedicDTO> Add(MedicDTO dto)
         {
@@ -149,7 +160,6 @@ namespace BusinessLogic.Services
                 medicDb.Status = dto.Status == 1 ? true : false;
                 medicDb.SpecialityId = dto.SpecialityId;//agregar includo address a medic get
 
-                 _workSpace.AddressRepository.Update(address);
                 _workSpace.MedicRepository.Update(medicDb);
                 await _workSpace.Save();
             }
