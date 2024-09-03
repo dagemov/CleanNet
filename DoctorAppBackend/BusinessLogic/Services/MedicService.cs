@@ -6,6 +6,7 @@ using Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,10 +22,11 @@ namespace BusinessLogic.Services
            _mapper = mapper;
            _workSpace = workSpace;
         }
-        
-        public async Task<Address> addressBeforeMeidc(MedicDTO dto)
+
+        //Address 
+        public async Task<Address> createAddress(MedicDTO dto,Address address)
         {
-            Address address = await _workSpace.AddressRepository.GetAsync(a => a.Id == dto.AddressId);
+   
 
             if (address == null)
             {
@@ -38,34 +40,55 @@ namespace BusinessLogic.Services
                 await _workSpace.AddressRepository.Add(address);
                 await _workSpace.Save();
             }
-            else if(address.Id == dto.AddressId) 
-            {
-                address = await _workSpace.AddressRepository.GetAsync(a => a.Id == dto.AddressId);
-                // aqui hacer lo mismo que crear , pero darle actualizar :D   await _workSpace.AddressRepository.Update(address);
-
-                address.NameStreet = dto.NameStreet;
-                address.Number = dto.NumberStreet;
-                address.ZipCode = dto.ZipCode;
-                address.Description = dto.Description;
-                
-
-                 _workSpace.AddressRepository.Update(address);
-                await _workSpace.Save();
-
-            }
             return (address);
         }
+        public async Task<Address> UpdatedAddress(MedicDTO dto, Address address)
+        {
+            address = await _workSpace.AddressRepository.GetAsync(a => a.Id == dto.AddressId);
+            // aqui hacer lo mismo que crear , pero darle actualizar :D   await _workSpace.AddressRepository.Update(address);
+
+            address.NameStreet = dto.NameStreet;
+            address.Number = dto.NumberStreet;
+            address.ZipCode = dto.ZipCode;
+            address.Description = dto.Description;
+
+
+            _workSpace.AddressRepository.Update(address);
+            await _workSpace.Save();
+
+            return (address);
+        }
+        public async Task<Address> GetOrCreateAddressForMedic(MedicDTO dto)
+        {
+            Address address = await _workSpace.AddressRepository.GetAsync(a => a.Id == dto.AddressId);
+
+            if(address == null)
+            {
+                address=await createAddress(dto,address!);
+               
+            }
+
+            else if(address.Id == dto.AddressId) 
+            {
+                address=await UpdatedAddress(dto,address!);
+
+            }
+           
+            return (address!);
+        }
+
+        //Medics
         public async Task<MedicDTO> Add(MedicDTO dto)
         {
             try
             {
-                var address = await  addressBeforeMeidc(dto);
+                var address = await GetOrCreateAddressForMedic(dto);
 
                 if (address == null)
                 {
                     throw new TaskCanceledException("Error to create adress before medic");
                 }
-
+             
                 Medic medic = new Medic()
                 {
                     AddresId = address.Id,
@@ -79,6 +102,8 @@ namespace BusinessLogic.Services
                     Created = DateTime.Now,
                     Updated = DateTime.Now,
                 };
+
+
                 await _workSpace.MedicRepository.Add(medic);
                 await _workSpace.Save();
 
@@ -145,7 +170,7 @@ namespace BusinessLogic.Services
         {
             try
             {
-                var address = await addressBeforeMeidc(dto);
+                var address = await GetOrCreateAddressForMedic(dto);
 
                 var medicDb = await _workSpace.MedicRepository.GetAsync(m=>m.Id == dto.Id);
 
