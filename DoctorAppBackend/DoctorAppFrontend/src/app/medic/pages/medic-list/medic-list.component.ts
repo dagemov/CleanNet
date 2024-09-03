@@ -7,6 +7,7 @@ import { SharedService } from '../../../shared/shared.service';
 import { filter } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalMedicComponent } from '../../modals/modal-medic/modal-medic.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-medic-list',
@@ -104,7 +105,42 @@ export class MedicListComponent implements OnInit, AfterViewInit{
     });
   }
 
-  deleteMedic(Medic:Medic){
-
+  deleteMedic(Medic:Medic)
+  {
+    Swal.fire
+    ({
+      title:'Are you sure about deleting this medic ?',
+      text: Medic.firstName+Medic.lastName+" \n"+Medic.specialityName,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'No',
+      confirmButtonText: 'Yes, delete it',
+    })
+    .then((result)=>
+    {
+      if(result.isConfirmed)
+      {
+        this._medicService.delete(Medic.id).subscribe
+        ({
+          next:(data)=>
+          {
+            if(data.isSuccesfuly)
+            {
+              this._shared.openSnackBar('Medic deleted successfully','Success');
+              this.getMedicts();
+            }
+            else
+            {
+              this._shared.openSnackBar('Speciality not deleted','Error');
+            }
+          },
+          error: (err) => {
+            console.log(err);
+          }
+        })
+      }
+    })
   }
 }

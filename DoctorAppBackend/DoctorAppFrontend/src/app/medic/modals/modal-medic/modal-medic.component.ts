@@ -34,7 +34,7 @@ export class ModalMedicComponent implements OnInit {
       phone: ['', Validators.required],
       gender: ['Male', Validators.required],
       specialityId: ['', Validators.required],
-      addressId: [''], // Retenido para manejar el ID de la dirección
+      addressId: [''], 
       status: ['1', Validators.required],
       nameStreet: ['', Validators.required],
       numberStreet: ['', Validators.required],
@@ -64,7 +64,7 @@ export class ModalMedicComponent implements OnInit {
         phone: this.dataMedic.phone,
         gender: this.dataMedic.gender,
         specialityId: this.dataMedic.specialityId,
-        addressId: this.dataMedic.addressId, // Cargar el ID de la dirección existente
+        addressId: this.dataMedic.addressId, // Load AdressId
         status: this.dataMedic.status,
         nameStreet: this.dataMedic.nameStreet,
         numberStreet: this.dataMedic.numberStreet,
@@ -74,7 +74,7 @@ export class ModalMedicComponent implements OnInit {
     }
   }
 
-  // Método para crear o actualizar el médico junto con la dirección
+
   createOrUpdateMedic() {
     const medic: Medic = {
       id: this.dataMedic == null ? 0 : this.dataMedic.id,
@@ -84,7 +84,7 @@ export class ModalMedicComponent implements OnInit {
       phone: this.formMedic.value.phone,
       gender: parseInt(this.formMedic.value.gender, 10),
       specialityId: parseInt(this.formMedic.value.specialityId, 10),
-      addressId: this.dataMedic?.addressId ?? 0,  // Usar el ID existente o 0 para nuevo
+      addressId: this.dataMedic?.addressId ?? 0,  // Use the acutal id or 0 if is a new medic
       status: parseInt(this.formMedic.value.status, 10),
       specialityName: '',
       addressName: '',
