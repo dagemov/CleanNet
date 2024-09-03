@@ -84,7 +84,7 @@ export class ModalMedicComponent implements OnInit {
       phone: this.formMedic.value.phone,
       gender: parseInt(this.formMedic.value.gender, 10),
       specialityId: parseInt(this.formMedic.value.specialityId, 10),
-      addressId: this.formMedic.value.addressId,  // Usar el ID existente o 0 para nuevo
+      addressId: this.dataMedic?.addressId ?? 0,  // Usar el ID existente o 0 para nuevo
       status: parseInt(this.formMedic.value.status, 10),
       specialityName: '',
       addressName: '',
