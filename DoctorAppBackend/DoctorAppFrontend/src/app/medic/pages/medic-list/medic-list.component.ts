@@ -93,14 +93,15 @@ export class MedicListComponent implements OnInit, AfterViewInit{
     })
   }
 
-  editMedic(Medic:Medic){
+  editMedic(medic: Medic) {
     this.dialog
-    .open(ModalMedicComponent,{disableClose:true,width:'600px',data : Medic})
+    .open(ModalMedicComponent, {disableClose: true, width: '600px', data: medic})
     .afterClosed()
-    .subscribe((result)=>
-    {
-      if(result === 'true') this.getMedicts();
-    })
+    .subscribe((result) => {
+        if (result === 'true') {
+            this.getMedicts(); // Refresh
+        }
+    });
   }
 
   deleteMedic(Medic:Medic){
